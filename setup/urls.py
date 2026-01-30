@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from galeria.views import index
+from django.urls import path, include
 
-urlpatterns = [path("admin/", admin.site.urls), path("", index)]
+# vai incluir todas as urls de galeria.urls para evitar tem muitos paths aqui
+urlpatterns = [path("admin/", admin.site.urls), path("", include("galeria.urls"))]
