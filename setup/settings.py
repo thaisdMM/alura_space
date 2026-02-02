@@ -123,3 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# todos os arquivos estaticos estao nessa pasta
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "setup/static")]
+
+# absolut path - root path
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
