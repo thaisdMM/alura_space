@@ -2,8 +2,17 @@ from django.shortcuts import render
 
 
 def index(request):
-    """Função responsável por responder a uma requisção"""
-    return render(request, "galeria/index.html")
+    """Função responsável por responder a uma requisção que leva a página principal do site"""
+
+    dados = {
+        1: {
+            "nome": "Nebulosa de Carina",
+            "legenda": "webbtelecope.org / NASA / James Webb",
+        },
+        2: {"nome": "Galáxia NGC 1079", "legenda": "nasa.org / NASA / Hubble"},
+    }
+
+    return render(request, "galeria/index.html", {"cards": dados})
 
 
 def imagem(request):
