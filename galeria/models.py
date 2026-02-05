@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # criar classes para virar tabela de banco de dados(sqlite3) usando Django ORM
 
@@ -63,6 +64,7 @@ class Fotografia(models.Model):
 
     # adicionar uma opção para que ao adicionar imagem não seja publicada imediatamente
     publicada = models.BooleanField(default=False)
+    data_fotografia = models.DateTimeField(default=datetime.now, blank=False)
 
     def __str__(self):
         # Método usado apenas para representação textual

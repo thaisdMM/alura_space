@@ -5,8 +5,9 @@ from galeria.models import Fotografia
 def index(request):
     """Função responsável por responder a uma requisção que leva a página principal do site"""
 
-    # item do banco de dados - agora vai filtrar pelas imagens publicadas
-    fotografias = Fotografia.objects.filter(publicada=True)
+    # item do banco de dados - vai filtrar pelas imagens publicadas
+    # -data_fotografia = com o '-' ordem decrescente: mais nova primeiro
+    fotografias = Fotografia.objects.order_by("-data_fotografia").filter(publicada=True)
 
     return render(request, "galeria/index.html", {"cards": fotografias})
 
