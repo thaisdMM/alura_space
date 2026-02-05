@@ -1,0 +1,33 @@
+[MASTER]
+
+# Plugin essencial para projetos Django
+load-plugins=pylint_django
+
+# Informa ao pylint qual settings do Django usar
+django-settings-module=setup.settings
+
+
+[MESSAGES CONTROL]
+
+# Mantemos os avisos importantes, não silenciamos erros reais
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring
+
+
+[FORMAT]
+
+max-line-length=88
+
+
+[DESIGN]
+
+max-args=10
+max-attributes=10
+
+
+[TYPECHECK]
+
+# Evita falsos positivos em atributos dinâmicos (Django já cuida disso)
+ignored-classes=objects
