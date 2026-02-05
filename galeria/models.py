@@ -61,6 +61,9 @@ class Fotografia(models.Model):
     # Nome do arquivo da foto (string simples)
     foto = models.CharField(max_length=100, null=False, blank=False)
 
+    # adicionar uma opção para que ao adicionar imagem não seja publicada imediatamente
+    publicada = models.BooleanField(default=False)
+
     def __str__(self):
         # Método usado apenas para representação textual
         # Não tem impacto no banco nem na validação

@@ -6,7 +6,7 @@ from galeria.models import Fotografia
 class ListandoFotografias(admin.ModelAdmin):
     """Classe para exibir e editar as fotografias no painel do Django Admin"""
 
-    list_display = ("id", "nome", "legenda")
+    list_display = ("id", "nome", "legenda", "publicada")
     # para exibir como link
     list_display_links = ("id", "nome")
     # adicionar um campo de busca
@@ -14,6 +14,8 @@ class ListandoFotografias(admin.ModelAdmin):
     search_fields = ("nome",)
     # filtrar por categoria
     list_filter = ("categoria",)
+    # para que seja editada na tela principal do admin, sem ter que toda hora entrar na imagem especifica para fazer a edição - aparece um checkbox
+    list_editable = ("publicada",)
     # paginação do site
     list_per_page = 10
 

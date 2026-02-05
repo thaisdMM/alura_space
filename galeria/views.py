@@ -5,10 +5,11 @@ from galeria.models import Fotografia
 def index(request):
     """Função responsável por responder a uma requisção que leva a página principal do site"""
 
-    # item do banco de dados
-    fotografias = Fotografia.objects.all()
+    # item do banco de dados - agora vai filtrar pelas imagens publicadas
+    fotografias = Fotografia.objects.filter(publicada=True)
 
     return render(request, "galeria/index.html", {"cards": fotografias})
+
 
 # vai receber o foto_id para fazer referencia ao id do banco de dados
 def imagem(request, foto_id):
