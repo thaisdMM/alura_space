@@ -6,30 +6,48 @@ from django.db import models
 
 
 class Fotografia(models.Model):
-    # Charfiel - str caracteres
-    # blank = evita str vazia
+    """
+    Esta classe representa uma tabela no banco de dados.
+    Cada atributo da classe vira uma coluna na tabela.
+    """
+
+    # Campo de texto curto (VARCHAR no banco)
+    # max_length:
+    #   - É uma regra REAL de banco de dados
+    #   - O banco NÃO aceita mais caracteres do que isso
+    #
+    # null=False:
+    #   - O banco NÃO aceita NULL
+    #   - Mas aceita string vazia ("")
+    #
+    # blank=False:
+    #   - NÃO é regra de banco
+    #   - Só é usada em formulários (ModelForm, Admin)
+    #   - NÃO é aplicada automaticamente no shell ou em .save()
     nome = models.CharField(max_length=100, null=False, blank=False)
+
+    # Mesmo comportamento do campo "nome"
     legenda = models.CharField(max_length=150, null=False, blank=False)
+
+    # TextField:
+    # - Usado para textos longos
+    # - NÃO tem limite máximo no banco (por isso não aparece max_length na migration)
+    #
+    # IMPORTANTE:
+    # null=False:
+    #   - Impede NULL no banco
+    #
+    # blank=False:
+    #   - Impede string vazia APENAS em formulários
+    #   - NÃO impede string vazia ao usar o shell ou .save()
+    #
+    # Por isso este campo pode acabar salvo como "" se não houver validação
     descricao = models.TextField(null=False, blank=False)
-    # nome da foto
+
+    # Nome do arquivo da foto (string simples)
     foto = models.CharField(max_length=100, null=False, blank=False)
 
     def __str__(self):
+        # Método usado apenas para representação textual
+        # Não tem impacto no banco nem na validação
         return f"Fotografia [nome={self.nome}]"
-
-
-# CODIGO NO TERMINAL PARA CRIAR UMA FOTO
-
-# (.venv) ➜  alura-space git:(persistencia-dados-e-admin) python manage.py shell
-# 13 objects imported automatically (use -v 2 for details).
-
-# Cmd click to launch VS Code Native REPL
-# Python 3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0 (clang-1700.0.13.3)] on darwin
-# Type "help", "copyright", "credits" or "license" for more information.
-# (InteractiveConsole)
-# >>> from galeria.models import Fotografia
-# >>> foto = Fotografia(nome="Nebulosa de Carina", legenda="webbtelecope.org / NASA / James Webb", foto="carina-nebulosa.png")
-# >>> foto.save()
-# >>> Fotografia.objects.all()
-# <QuerySet [<Fotografia: Fotografia [nome=Nebulosa de Carina]>]>
-# >>>
