@@ -19,19 +19,20 @@
                     <div class="cards">
                         <h2 class="cards__titulo">Navegue pela galeria</h2>
                         <ul class="cards__lista">
-                            <!-- adicionando o dicionário de dados das imagens com codigo python - for value, key
-                             - estrutura de repetição -->
-                            {% for foto_id, info in cards.items %}
+                            <!-- agora já existe um tabela no banco de dados -->
+                             {% if cards %}
+                            {% for fotografia in cards %}
                             <li class="card">
+                                <!-- adicionou nome da foto de forma dinâmica -->
                                 <a href="{% url 'imagem' %}">
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/carina-nebula.png' %}" alt="foto">
+                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/'%}{{ fotografia.foto }}" alt="foto">
                                 </a>
                                 <span class="card__tag">Estrelas</span>
                                 <div class="card__info">
                                 <!-- adicionando o nome e legenda da foto depois de ter feito o bloco for -->
-                                    <p class="card__titulo">{{ info.nome }}</p>
+                                    <p class="card__titulo">{{ fotografia.nome }}</p>
                                     <div class="card__texto">
-                                        <p class="card__descricao">{{ info.legenda }}</p>
+                                        <p class="card__descricao">{{ fotografia.legenda }}</p>
                                         <span>
                                             <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
                                         </span>
@@ -39,6 +40,9 @@
                                 </div>
                             </li>
                             {% endfor %}
+                            <!-- else por causa do if cards - em branco: nada acontece -->
+                            {% else %}
+                            {% endif %}
                         </ul>
                     </div>
                 </section>
