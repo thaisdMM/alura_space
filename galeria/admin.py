@@ -12,6 +12,10 @@ class ListandoFotografias(admin.ModelAdmin):
     # adicionar um campo de busca
     # - search_fields tem que ser uma tupla só a , já é o suficiente ("nome",)
     search_fields = ("nome",)
+    # filtrar por categoria
+    list_filter = ("categoria",)
+    # paginação do site
+    list_per_page = 10
 
 
 # toda vez que criar uma nova classe tem que passar para o admin.site.register
