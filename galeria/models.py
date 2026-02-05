@@ -1,6 +1,8 @@
 from django.db import models
 
 # criar classes para virar tabela de banco de dados(sqlite3) usando Django ORM
+
+# TODA VEZ QUE MUDA O MODELS TEM QUE:
 #  1- usar um comando no terminal para criar migrations : python manage.py makemigrations
 # 2- usar um comando no terminal para rodar migrations : ppython manage.py migrate
 
@@ -10,6 +12,14 @@ class Fotografia(models.Model):
     Esta classe representa uma tabela no banco de dados.
     Cada atributo da classe vira uma coluna na tabela.
     """
+
+    # Como é Charfield tem ser tupla
+    OPCOES_CATEGORIA = [
+        ("NEBULOSA", "Nebulosa"),
+        ("ESTRELA", "Estrela"),
+        ("GALÁXIA", "Galáxia"),
+        ("PLANETA", "Planeta"),
+    ]
 
     # Campo de texto curto (VARCHAR no banco)
     # max_length:
@@ -28,6 +38,10 @@ class Fotografia(models.Model):
 
     # Mesmo comportamento do campo "nome"
     legenda = models.CharField(max_length=150, null=False, blank=False)
+
+    # definir as categorias que serão opções para não poder criar aleatório
+    # precisa definir padrão default - nesse caso esta vazio, mas nunca será vazio pois tem acima OPCOES_CATEGORIA
+    categoria = models.CharField(max_length=100, choices=OPCOES_CATEGORIA, default="")
 
     # TextField:
     # - Usado para textos longos
