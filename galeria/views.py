@@ -20,3 +20,7 @@ def imagem(request, foto_id):
 
     # esse dicionario é para passar para o imagem.html o objeto que faz referencia ao id
     return render(request, "galeria/imagem.html", {"fotografia": fotografia})
+
+
+def buscar(request):
+    return render(request, "galeria/buscar.html")
