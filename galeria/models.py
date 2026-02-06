@@ -71,4 +71,4 @@ class Fotografia(models.Model):
     def __str__(self):
         # Método usado apenas para representação textual
         # Não tem impacto no banco nem na validação
-        return f"Fotografia [nome={self.nome}]"
+        return f"{self.nome}"
