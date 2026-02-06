@@ -59,8 +59,10 @@ class Fotografia(models.Model):
     # Por isso este campo pode acabar salvo como "" se não houver validação
     descricao = models.TextField(null=False, blank=False)
 
-    # Nome do arquivo da foto (string simples)
-    foto = models.CharField(max_length=100, null=False, blank=False)
+    # Vai alterar para ImagFields - para conseguir fazer upload da foto
+    # para evitar conflitos entre fotos repetidas, insere patas com ano, mes, dia...
+    # blank=True - é possivel cadastrar uma foto sem imagem - depois vai colocar foto default
+    foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
 
     # adicionar uma opção para que ao adicionar imagem não seja publicada imediatamente
     publicada = models.BooleanField(default=False)
