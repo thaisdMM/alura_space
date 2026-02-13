@@ -5,11 +5,17 @@ class LoginForms(forms.Form):
     nome_login = forms.CharField(
         label="Nome de Login",
         required=True,
-        max_length=100
-        )
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={"class": "form-control", "placeholder": "Ex.: Thaís Moreira"}
+        ),
+    )
     senha = forms.CharField(
         label="Senha",
         required=True,
         max_length=70,
-        widget=forms.PasswordInput()
+        # passando attributes para o formulario para estilização
+        widget=forms.PasswordInput(
+            attrs={"class": "form-control", "placeholder": "Digite a sua senha"}
+        ),
     )
