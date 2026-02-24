@@ -42,7 +42,7 @@
                 </nav>
             </section>
             <section class="galeria" style="margin-left: 5em">
-                <form action="" method="">
+                <form action="{% url 'cadastro' %}" method="POST">
                     <!-- para garantir a segurança da informaçao do conteúdo python -->
                     {% csrf_token %}
                     <div class="row">
