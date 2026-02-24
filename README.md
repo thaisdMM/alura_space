@@ -91,7 +91,8 @@ Add controlled user interaction to the application, enabling authentication work
 ## 📌 Notes
 
 - This project is part of a **progressive learning series**, not a production-ready application.
-- Each branch reflects a specific learning stage and should be viewed in that context.
+- Branches are intentionally kept independent to preserve each learning stage.
+- To explore a specific learning stage, switch to the corresponding branch.
 - Future branches continue expanding the same project with additional Django features.
 
 ---
