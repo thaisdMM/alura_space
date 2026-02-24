@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 
 from django.contrib import auth
 
+from django.contrib import messages
+
 from usuarios.forms import LoginForms, CadastroForms
 
 # Definindo a classe de usuário de forma dinâmica
@@ -40,8 +42,12 @@ def login(request):
             if usuario is not None:
                 auth.login(request, usuario)
 
+                # colocando mensagem
+                messages.success(request, f"{nome} logado com sucesso!")
+
                 return redirect("index")
             else:
+                messages.error(request, "Erro ao efetuar login.")
                 return redirect("login")
 
     return render(request, "usuarios/login.html", {"form": login_form})
@@ -74,6 +80,7 @@ def cadastro(request):
             # o get() não trava o sistema
 
             if dados.get("senha_1") != dados.get("senha_2"):
+                messages.error(request, "Senhas não são iguais.")
                 return redirect("cadastro")
 
             # senha1 e 2 são iguais:
@@ -86,6 +93,7 @@ def cadastro(request):
             # validação 4
             # ver se existe um usario com o mesmo nome
             if User.objects.filter(username=nome).exists():
+                messages.error(request, "Usuário já cadastrado no sistema.")
                 return redirect("cadastro")
 
             # criar um novo usuario
@@ -93,6 +101,8 @@ def cadastro(request):
             # não precisa usar o save() pois o create_user já salva automaticamente,
             # só se fizer mudança, ai tem que salvar - comentei o save() do codigo do professor
             # usuario.save()
+
+            messages.success(request, "Cadastro efetuado com sucesso!")
             return redirect("login")
 
     return render(request, "usuarios/cadastro.html", {"form": cadastro_form})
