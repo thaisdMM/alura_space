@@ -1,384 +1,609 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
 
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-    line-height: 1;
-    font-family: 'Space Grotesk', sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(#041833,#04244F,#154580);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  line-height: 1;
+  font-family: "Space Grotesk", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(#041833, #04244f, #154580);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-ol, ul {
-    list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-    quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .banner {
-    width: auto;
-    position: relative;
-    margin-bottom: 1.5rem;
+  width: auto;
+  position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .banner__imagem {
-    width: 100%;
+  width: 100%;
 }
 
 .banner__titulo {
-    color: #FFFFFF;
-    font-size: 40px;
-    width: 350px;
-    line-height: 50px;
-    position: absolute;
-    top: 80px;
-    left: 80px;
+  color: #ffffff;
+  font-size: 40px;
+  width: 350px;
+  line-height: 50px;
+  position: absolute;
+  top: 80px;
+  left: 80px;
 }
 
 .cabecalho {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin: 1.5rem 0 4rem 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0 4rem 0;
 }
 
 .cabecalho__busca {
-    align-items: center;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #C98CF1,#7B78E5);
-    display: flex;
-    height: auto;
-    justify-content: space-between;
-    padding: 2px;
-    width: auto; 
+  align-items: center;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #c98cf1, #7b78e5);
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  padding: 2px;
+  width: auto;
 }
 
 .busca__fundo {
-    align-items: center;
-    background-color: #041A37;
-    border-radius: 8px;
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
+  align-items: center;
+  background-color: #041a37;
+  border-radius: 8px;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
 }
 
+/* =============================================
+   CAMPO DE BUSCA — CORREÇÕES DE LEGIBILIDADE
+   ---------------------------------------------
+   Problema: o reset CSS (no topo deste arquivo) apaga
+   todas as propriedades padrão dos inputs, incluindo
+   a cor do texto. Sem Bootstrap, o input ficava com
+   texto preto sobre o fundo escuro (#041a37), tornando
+   o que era digitado invisível.
+
+   Solução: definir explicitamente cor do texto, cursor,
+   placeholder e comportamento de autofill.
+   ============================================= */
+
 .busca__input {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    font-size: 1rem;
-    height: 24px;
-    padding: 10px;
-    width: 500px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  height: 24px;
+  padding: 10px;
+  width: 500px;
+
+  /* NOVO: cor do texto digitado — sem isso fica preto sobre fundo escuro */
+  color: #ffffff;
+
+  /* NOVO: cor do cursor piscante (caret) — combinando com o texto */
+  caret-color: #ffffff;
+
+  /* NOVO: remove o contorno azul/laranja padrão do browser ao clicar no campo */
+  outline: none;
+}
+
+/* NOVO: estilo do placeholder (texto de dica antes de digitar)
+   O reset CSS não afeta o placeholder, mas sem definição explícita
+   alguns browsers usam cinza muito claro que some no fundo escuro. */
+.busca__input::placeholder {
+  color: #a0aec0; /* cinza médio — legível, mas mais suave que o texto real */
+  opacity: 1; /* Firefox às vezes reduz a opacidade do placeholder automaticamente */
+}
+
+/* NOVO: correção de autofill
+   Quando o browser preenche automaticamente um campo (ex.: senha salva),
+   ele força um fundo branco ou amarelo por segurança.
+   Isso quebra o layout escuro. A solução é "fingir" um fundo escuro
+   usando box-shadow interno (inset), que o browser permite sobrescrever. */
+.busca__input:-webkit-autofill,
+.busca__input:-webkit-autofill:hover,
+.busca__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff; /* mantém o texto branco */
+  -webkit-box-shadow: 0 0 0px 1000px #041a37 inset; /* "pinta" o fundo escuro por cima */
+  transition: background-color 5000s ease-in-out 0s; /* atraso enorme para o browser não reverter */
+}
+
+/* NOVO: feedback visual quando o campo está em foco
+   Quando a pessoa clica no campo de busca, um brilho roxo aparece
+   ao redor do contêiner (.busca__fundo), indicando que está ativo.
+   Usamos :focus-within no pai porque o input não tem borda própria. */
+.busca__fundo:focus-within {
+  box-shadow: 0 0 0 2px #7b78e5;
+  border-radius: 8px;
 }
 
 .busca__icone {
-    cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
 }
 
 .cards {
-    width: 100%;
+  width: 100%;
 }
 
 .cards__titulo {
-    color: #7B78E5;
-    font-size: 2rem;
-    line-height: 3rem;
-    margin-bottom: 1.5rem;
+  color: #7b78e5;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
 }
 
-.cards__lista{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+.cards__lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .card {
-    border-radius: 10px;
-    box-shadow: 0px 10px 10px #00000050;
-    color: #FFFFFF;
-    margin-bottom: 1.5rem;
-    position: relative;
-    width: 450px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px #00000050;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 450px;
+  --bs-card-bg: #041d3e;
 }
 
 .card__imagem {
-    width: 450px;
-    border-radius: 10px 10px 0 0;
+  width: 450px;
+  border-radius: 10px 10px 0 0;
 }
 
 .card__tag {
-    background-color: #D9D9D940;
-    border-radius: 8px;
-    border: 2px solid transparent;
-    font-size: 1.2rem;
-    left: 310px;
-    margin-right: 1.5rem;
-    padding: .5rem .5rem;
-    position: absolute;
-    text-align: center;
-    top: 20px;
-    width: 100px;
+  background-color: #d9d9d940;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-size: 1.2rem;
+  left: 310px;
+  margin-right: 1.5rem;
+  padding: 0.5rem 0.5rem;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  width: 100px;
 }
 
 .card__info {
-    font-size: 1.2rem;
-    padding: 0 1.5rem 1rem 1.5rem;
+  font-size: 1.2rem;
+  padding: 0 1.5rem 1rem 1.5rem;
 }
 
 .card__titulo {
-    font-weight: bold;
-    line-height: 1.2rem;
-    margin-top: 0.8em;
+  font-weight: bold;
+  line-height: 1.2rem;
+  margin-top: 0.8em;
 }
 
 .card__texto {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card__texto img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .card__descricao {
-    font-size: 0.6em;
-    margin-top: 0.8em;
+  font-size: 0.6em;
+  margin-top: 0.8em;
 }
 
 .galeria {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .imagem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagem__conteudo {
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px 20px 0 0;
-    width: 950px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0 0;
+  width: 950px;
 }
 
 .imagem__imagem {
-    width: 100%;
-    border-radius: 20px;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .imagem__info {
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .imagem__texto {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #FFFFFF;
-    margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  margin-top: 0.5rem;
 }
 
 .imagem__titulo {
-    font-weight: bold;
-    line-height: 2rem;
-    color: #FFFFFF;
+  font-weight: bold;
+  line-height: 2rem;
+  color: #ffffff;
 }
 
 .imagem__texto {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .imagem__descricao {
-    font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 .menu-lateral {
-    padding-right: 1.5rem;
-    box-sizing: border-box;
-    min-width: 270px;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+  min-width: 270px;
 }
 
 .menu-lateral__navegacao {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-lateral__navegacao a {
-    font-family: 'Space Grotesk', sans-serif;
-    align-items: center;
-    display: flex;
-    margin-bottom: 1.5rem;
-    text-decoration: none;
-    color: #D9D9D9;
-    font-size: 24px;
+  font-family: "Space Grotesk", sans-serif;
+  align-items: center;
+  display: flex;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: #d9d9d9;
+  font-size: 24px;
 }
 
 .menu-lateral__navegacao a:first-child {
-    font-weight: bold;
-    color: #7B78E5;
+  font-weight: bold;
+  color: #7b78e5;
 }
 
 .menu-lateral__navegacao img {
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .pagina-inicial {
-    max-width: 1440px;
-    padding: 1.5rem;
-    margin: 0 auto;
+  max-width: 1440px;
+  padding: 1.5rem;
+  margin: 0 auto;
 }
 
 .populares {
-    margin-left: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .populares__titulo {
-    font-size: 2rem;
-    color: #7B78E5;
-    line-height: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #7b78e5;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .populares__imagens {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .populares__imagem {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .populares__botao {
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #C98CF1,#7B78E5);
-    padding: 2px;
-    box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #c98cf1, #7b78e5);
+  padding: 2px;
+  box-sizing: border-box;
 }
 
 .populares__link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    text-decoration: none;
-    color: #FFFFFF;
-    background-color: #082D5C;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    transition: .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #082d5c;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  transition: 0.5s;
 }
 
 .populares__link:hover {
-    background: transparent;
+  background: transparent;
 }
 
 .principal {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .rodape {
-    background-color: #04244F;
-    width: 100%;
-    padding: 1.5rem 3rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    color: #FFFFFF;
+  background-color: #04244f;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
 }
 
 .rodape__icones {
-    width: 80px;
-    display: flex;
-    justify-content: space-between;
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .rodape__texto {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .tags {
-    padding: 1.5rem 0;
-    display: flex;
-    align-items: center;
-    color: #D9D9D9;
-    font-size: 1.3rem;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  color: #d9d9d9;
+  font-size: 1.3rem;
 }
 
 .tags__titulo {
-    margin-right: 4rem;
+  margin-right: 4rem;
 }
 
 .tags__lista {
-    display: flex;
+  display: flex;
 }
 
 .tags__tag {
-    background-color: #D9D9D930;
-    margin-right: 1.5rem;
-    border-radius: 8px;
-    padding: .8rem .5rem;
-    width: 100px;
-    text-align: center;
-    border: 2px solid transparent;
+  background-color: #d9d9d930;
+  margin-right: 1.5rem;
+  border-radius: 8px;
+  padding: 0.8rem 0.5rem;
+  width: 100px;
+  text-align: center;
+  border: 2px solid transparent;
 }
 
 .tags__tag:hover {
-    border: 2px solid #7B78E5;
-    cursor: pointer;
+  border: 2px solid #7b78e5;
+  cursor: pointer;
+}
+
+/* =============================================
+   ALERTS — substituição das classes do Bootstrap
+   ---------------------------------------------
+   O instrutor copiou .alert e .alert-primary do Bootstrap
+   para manter as mensagens de login/logout funcionando
+   sem depender da CDN. Esse bloco permanece igual ao
+   original — não foi necessário alterar nada aqui.
+   ============================================= */
+
+.alert {
+  --bs-alert-bg: transparent;
+  --bs-alert-padding-x: 1rem;
+  --bs-alert-padding-y: 1rem;
+  --bs-alert-margin-bottom: 1rem;
+  --bs-alert-color: inherit;
+  --bs-alert-border-color: transparent;
+  --bs-alert-border: 1px solid var(--bs-alert-border-color);
+  --bs-alert-border-radius: 0.375rem;
+  position: relative;
+  padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+  margin-bottom: var(--bs-alert-margin-bottom);
+  color: var(--bs-alert-color);
+  background-color: var(--bs-alert-bg);
+  border: var(--bs-alert-border);
+  border-radius: var(--bs-alert-border-radius);
+}
+
+.alert-primary {
+  --bs-alert-color: #084298;
+  --bs-alert-bg: #cfe2ff;
+  --bs-alert-border-color: #b6d4fe;
+}
+
+/* =============================================
+   FORMULÁRIOS DE LOGIN E CADASTRO — sem Bootstrap
+   ---------------------------------------------
+   Os campos de login e cadastro usam class="form-control"
+   definida nos widgets do forms.py (Django).
+   Essa classe pertence ao Bootstrap — sem ele carregado,
+   os campos ficam sem estilo: sem borda, sem padding,
+   fundo branco, texto preto, quebrando o layout escuro.
+
+   Solução: recriar aqui apenas o necessário para que
+   os campos funcionem visualmente no tema escuro do projeto.
+   Nenhum arquivo Python ou HTML precisou ser alterado.
+   ============================================= */
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: "Space Grotesk", sans-serif;
+
+  /* NOVO: texto branco — sem isso herda preto do body e some no fundo escuro */
+  color: #ffffff;
+
+  /* NOVO: fundo escuro combinando com o tema do projeto */
+  background-color: #041a37;
+
+  /* NOVO: borda roxa suave para delimitar o campo visivelmente */
+  border: 1px solid #7b78e5;
+
+  border-radius: 0.375rem;
+  box-sizing: border-box; /* garante que padding não aumente o tamanho do campo */
+  outline: none;
+  transition: border-color 0.2s; /* animação suave na borda ao focar */
+}
+
+/* Placeholder dos campos de formulário — mesmo tratamento do campo de busca */
+.form-control::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}
+
+/* Destaque visual quando o campo está em foco (clicado/selecionado) */
+.form-control:focus {
+  border-color: #c98cf1; /* borda fica mais clara (lilás) */
+  box-shadow: 0 0 0 2px #c98cf140; /* brilho externo sutil — o "40" é opacidade em hex */
+}
+
+/* Correção de autofill nos campos de login/cadastro
+   Mesmo problema do campo de busca: browser força fundo branco.
+   Mesma solução: box-shadow inset escuro + atraso de transição. */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px #041a37 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
