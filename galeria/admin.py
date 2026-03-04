@@ -12,8 +12,11 @@ class ListandoFotografias(admin.ModelAdmin):
     # adicionar um campo de busca
     # - search_fields tem que ser uma tupla só a , já é o suficiente ("nome",)
     search_fields = ("nome",)
-    # filtrar por categoria
-    list_filter = ("categoria",)
+    # filtrar por categoria e por usuário
+    list_filter = (
+        "categoria",
+        "usuario",
+    )
     # para que seja editada na tela principal do admin, sem ter que toda hora entrar na imagem especifica para fazer a edição - aparece um checkbox
     list_editable = ("publicada",)
     # paginação do site

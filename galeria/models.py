@@ -1,6 +1,11 @@
 from django.db import models
 from datetime import datetime
 
+# forma mais recomendada do que:
+#  from django.contrib.auth.models import User
+from django.conf import settings
+
+
 # criar classes para virar tabela de banco de dados(sqlite3) usando Django ORM
 
 # TODA VEZ QUE MUDA O MODELS TEM QUE:
@@ -67,6 +72,16 @@ class Fotografia(models.Model):
     # adicionar uma opção para que ao adicionar imagem não seja publicada imediatamente
     publicada = models.BooleanField(default=False)
     data_fotografia = models.DateTimeField(default=datetime.now, blank=False)
+
+    # associar a tabela de users
+    # on_delete - se o usuario for deletado
+    usuario = models.ForeignKey(
+        # ao invés de to=User:
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="fotos", # mais claro que user - usado pelo professor
+    )
 
     def __str__(self):
         # Método usado apenas para representação textual
