@@ -63,3 +63,34 @@ class CadastroForms(forms.Form):
             }
         ),
     )
+
+    # django tem que ser clean com o nome que deseja validar - clean_<field_name>
+    def clean_nome_cadastro(self):
+        """Método para limpar o campo nome_cadastro
+        e impor a regra de não ter espaços no Nome de Cadastro"""
+        nome = self.cleaned_data.get("nome_cadastro")
+
+        if nome:
+            nome = nome.strip()
+
+            # se tiver espaço vai dar erro
+            if " " in nome:
+                raise forms.ValidationError(
+                    "Espaços não são permitidos no campo Nome de Cadastro"
+                )
+            else:
+                return nome
+
+    def clean_senha_2(self):
+        """
+        Método para limpar as senhas e impedir senhas diferentes na confirmação da senha
+        """
+        senha_1 = self.cleaned_data.get("senha_1")
+        senha_2 = self.cleaned_data.get("senha_2")
+
+        if senha_1 and senha_2:
+            if senha_1 != senha_2:
+                raise forms.ValidationError("Senhas não são iguais")
+
+            else:
+                return senha_2

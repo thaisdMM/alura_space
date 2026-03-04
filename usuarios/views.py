@@ -70,18 +70,7 @@ def cadastro(request):
 
             dados = cadastro_form.cleaned_data
 
-            # validação 3
-            # se a senha for diferente vai redirecionar para fazer cadastro
-
-            #  código do professor
-            # if cadastro_form["senha_1"].value() != cadastro_form["senha_2"].value():
-
-            # trocar pelo get() - para maior segurança contra erros
-            # o get() não trava o sistema
-
-            if dados.get("senha_1") != dados.get("senha_2"):
-                messages.error(request, "Senhas não são iguais.")
-                return redirect("cadastro")
+            # removeu a validação da senha para forms.py
 
             # senha1 e 2 são iguais:
             # detalhe como o professor nao usava o get() nem o cleaned_data todos os dados estavam assim:
