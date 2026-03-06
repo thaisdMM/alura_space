@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Galeria de Fotos{% endblock %}
+
+{% block content %}
+
+    {% include 'partials/_header.html' %}
+
+    <main class="principal">
+
+        <section class="menu-lateral">
+            {% include 'partials/_menu.html' %}
+        </section>
+
+        <section class="conteudo">
+            {% block galeria_content %}{% endblock %}
+        </section>
+
+    </main>
+
+    {% include 'partials/_footer.html' %}
+
+{% endblock %}
