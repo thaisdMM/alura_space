@@ -5,22 +5,26 @@ from galeria.models import Fotografia
 
 
 def index(request):
-    """Função responsável por responder a uma requisção que leva a página principal do site"""
+    """
+    Função responsável por responder a uma requisção que leva a página principal do site
+    Só usuários autenticados tem acesso ao index.
+    """
 
-    # agora que criamos login, cadastro e logout,
-    # vamos alterar a view de galeria para só acessar o index pessoas autenticadas
     if not request.user.is_authenticated:
         messages.error(request, "Usuário não logado.")
         return redirect("login")
 
-    # item do banco de dados - vai filtrar pelas imagens publicadas
-    # -data_fotografia = com o '-' ordem decrescente: mais nova primeiro
+    # ordem decrescente - mais nova primeiro
     fotografias = Fotografia.objects.order_by("-data_fotografia").filter(publicada=True)
 
-    return render(request, "galeria/index.html", {"cards": fotografias})
+    context = {
+        "cards": fotografias,
+        "page_title": "Galeria de fotografias do espaço!",
+    }
+
+    return render(request, "galeria/gallery_list.html", context)
 
 
-# vai receber o foto_id para fazer referencia ao id do banco de dados
 def imagem(request, foto_id):
 
     #  Passa o model, e do objeto a pk(primary_key)= foto_id
@@ -31,18 +35,33 @@ def imagem(request, foto_id):
 
 
 def buscar(request):
+    """
+    Função responsável por possibilitar a busca de uma imagem por nome(nome_a_buscar)
+    ou pela categoria(categoria__icontains).
 
-    # agora que criamos login, cadastro e logout,
-    # vamos alterar a view de galeria para só acessar conseguir buscar pessoas autenticadas
+    Só usuários autenticados tem acesso.
+    """
+
     if not request.user.is_authenticated:
         messages.error(request, "Usuário não logado")
         return redirect("login")
+
     # buscar todos os objetos que tem no banco de dados
     fotografias = Fotografia.objects.order_by("-data_fotografia").filter(publicada=True)
+
     if "buscar" in request.GET:
-        # request.GET['buscar'] - dentro do input do _menu.html o name="buscar"
+        # request.GET['buscar'] - dentro do input do _header.html o name="buscar"
         nome_a_buscar = request.GET["buscar"]
         if nome_a_buscar:
+
+            from django.db.models import Q
+
             # nome__icontains - se ao menos parte faz referência ao nome que esta buscando
-            fotografias = fotografias.filter(nome__icontains=nome_a_buscar)
-    return render(request, "galeria/buscar.html", {"cards": fotografias})
+            # Q - Q objects permitem fazer buscas complexas (OR, AND, NOT).
+            fotografias = fotografias.filter(
+                Q(nome__icontains=nome_a_buscar) | Q(categoria__icontains=nome_a_buscar)
+            )
+
+    context = {"cards": fotografias, "page_title": "Resultados da busca"}
+
+    return render(request, "galeria/gallery_list.html", context)
