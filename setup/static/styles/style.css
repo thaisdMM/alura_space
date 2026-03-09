@@ -419,3 +419,19 @@ table {
     --bs-alert-bg: #f8d7da;
     --bs-alert-border-color: #f5c2c7;
 }
+
+/* Tags clicáveis */
+.tags__lista a {
+    text-decoration: none;  /* Remove sublinhado */
+    color: inherit;         /* Mantém cor original */
+}
+
+.tags__tag {
+    cursor: pointer;        /* Cursor vira mãozinha */
+    transition: all 0.3s;   /* Transição suave */
+}
+
+.tags__tag:hover {
+    transform: scale(1.1);  /* Aumenta levemente no hover */
+    opacity: 0.8;           /* Fica levemente transparente */
+}
