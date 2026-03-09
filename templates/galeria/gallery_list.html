@@ -1,0 +1,36 @@
+{% extends 'base/base_galeria.html' %}
+{% load static %}
+
+{% block galeria_content %}
+    <section class="banner">
+        <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
+        <h1 class="banner__titulo">{{ page_title }}</h1>
+    </section>
+
+    <section class="tags">
+        <p class="tags__titulo">Busque por tags:</p>
+        <ul class="tags__lista">
+            <a href="{% url 'buscar' %}?buscar=NEBULOSA">
+                <li class="tags__tag">Nebulosa</li>
+            </a>
+            <a href="{% url 'buscar' %}?buscar=ESTRELA">
+                <li class="tags__tag">Estrela</li>
+            </a>
+            <a href="{% url 'buscar' %}?buscar=GALÁXIA">
+                <li class="tags__tag">Galáxia</li>
+            </a>
+            <a href="{% url 'buscar' %}?buscar=PLANETA">
+                <li class="tags__tag">Planeta</li>
+            </a>
+        </ul>
+    </section>
+
+    <section class="galeria">
+        <div class="cards">
+            <h2 class="cards__titulo">Navegue pela galeria</h2>
+            <ul class="cards__lista">
+                {% include 'partials/_cards.html' %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
