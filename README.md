@@ -79,6 +79,35 @@ Add controlled user interaction to the application, enabling authentication work
 
 ---
 
+## 🔧 `refactor/project-structure` — Template Architecture & Code Quality _(Personal Initiative)_
+
+After completing the course branches, **I decided to refactor the project** to improve code organization, maintainability, and professional standards - applying best practices and clean code principles.
+
+**Key improvements:**
+
+- **Template Architecture Redesign**
+  Created hierarchical template inheritance (`base.html` → `base_galeria.html`/`base_auth.html` → pages) with strategic blocks for flexibility
+
+- **Code Deduplication (DRY Principle)**
+  Eliminated ~70% of duplicate HTML by consolidating authentication and gallery templates into reusable components (`form_auth.html`, `gallery_list.html`, `_cards.html`, `_header.html`)
+
+- **Separation of Concerns**
+  Extracted and reorganized partials with single clear responsibilities, fixing structural HTML issues (unclosed tags across files)
+
+- **Enhanced Search Functionality**
+  Improved search to filter by both photo name and category, added clickable category tags for intuitive filtering
+
+- **Dynamic Content**
+  Replaced hardcoded values with database-driven content (photo categories, page titles)
+
+**Technical decisions:**
+Isolated Bootstrap to authentication pages only, preventing CSS conflicts. Applied Conventional Commits standard for clear change history.
+
+**Result:**
+Transformed a functional learning project into a maintainable, production-ready codebase following Django and software engineering best practices.
+
+---
+
 ## 🛠️ Technologies Used
 
 - Python
